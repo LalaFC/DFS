@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
         if (instance != null && instance != this) { Destroy(this); }
         else { instance = this; }
         controlPanel = GameObject.Find("ControlPanel");
-        finishPanel = GameObject.Find("FinishPanel");
-        finishPanel.SetActive(false);
+        //finishPanel = GameObject.Find("FinishPanel");
+        //finishPanel.SetActive(false);
         controlPanel.SetActive(false);
         Player = GameObject.FindWithTag("Player");
         paths = GetComponent<PathFinder>();
@@ -56,6 +56,10 @@ public class GameManager : MonoBehaviour
         startNode = maze.nodesList[0].gameObject;
         Player.transform.position = startNode.transform.position;
         startNode.GetComponent<MazeNode>().ChangeFloorColor(Color.green);
+        FindEndNode();
+    }
+    public void FindEndNode()
+    {
         searchEndNode = true;
     }
 

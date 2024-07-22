@@ -9,7 +9,9 @@ public class PathFinder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartMarker = Instantiate(StartMarker, GameManager.instance.Player.transform.position, Quaternion.identity);
+        EndMarker = Instantiate(EndMarker, GameManager.instance.Player.transform.position, Quaternion.identity);
+        TurnOffMarker();
     }
 
     // Update is called once per frame
@@ -19,8 +21,7 @@ public class PathFinder : MonoBehaviour
     }
     public void FindPath()
     {
-        Instantiate(StartMarker, GameManager.instance.startNode.transform.position, Quaternion.identity);
-        Instantiate(EndMarker, GameManager.instance.endNode.transform.position, Quaternion.identity);
+        TurnOnMarker();
         nodes = GameManager.instance.maze.nodesList;
         foreach (var node in nodes)
         {
@@ -28,6 +29,18 @@ public class PathFinder : MonoBehaviour
         }
         GameManager.instance.endNode.GetComponent<MazeNode>().ChangeFloorColor(Color.red);
         StartCoroutine(Search());
+    }
+    public void TurnOffMarker()
+    {
+        StartMarker.SetActive(false);
+        EndMarker.SetActive(false);
+    }
+    public void TurnOnMarker()
+    {
+        StartMarker.transform.position = GameManager.instance.startNode.transform.position;
+        StartMarker.SetActive(true);
+        EndMarker.transform.position = GameManager.instance.endNode.transform.position;
+        EndMarker.SetActive(true);
     }
 
     IEnumerator Search()

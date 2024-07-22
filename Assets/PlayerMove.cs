@@ -15,7 +15,8 @@ public class PlayerMove : MonoBehaviour
     }
     private void Update()
     {
-        Paths = Paths = GameManager.instance.paths.currentPath;
+        if (GameManager.instance.paths.currentPath!=null)
+        Paths = GameManager.instance.paths.currentPath;
     }
 
     // Update is called once per frame
@@ -25,17 +26,23 @@ public class PlayerMove : MonoBehaviour
         {
             player.transform.position = Vector3.Lerp(transform.position, Paths[0].transform.position, 3*Time.fixedDeltaTime);
             transform.LookAt(Paths[0].transform.position);
+            if (Paths.Count == 1)
+            {
+                GameManager.instance.startNode = Paths[0].gameObject;
+            }
             if (Vector3.Distance(transform.position, Paths[0].transform.position) <0.2f)
             {
                 Paths[0].ChangeFloorColor(Color.black);
                 Paths.Remove(Paths[0]);
             }
+
         }
         else if (canMove && Paths.Count == 0)
         {
-            boom.SetActive(true);
-            GameManager.instance.finishPanel.SetActive(true);
-
+            canMove = false;
+            GameManager.instance.paths.TurnOffMarker();
+            GameManager.instance.endNode = null;
+            GameManager.instance.FindEndNode();
         }
     }
     public void Move()

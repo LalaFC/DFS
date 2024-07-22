@@ -545,7 +545,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6783141872650833241, guid: 76b75cd54bc18bd47a031c535055414c, type: 3}
   m_PrefabInstance: {fileID: 506808951}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 752185989}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc963baf80d83944690dcd154bb53601, type: 3}
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedf5ed2e08d7de40bd8c12514905201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 752185989}
   maze: {fileID: 1354254562}
   startNode: {fileID: 0}
   endNode: {fileID: 0}
@@ -814,6 +814,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710563778}
   m_CullTransparentMesh: 1
+--- !u!1 &752185989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8455948588762079865, guid: 76b75cd54bc18bd47a031c535055414c, type: 3}
+  m_PrefabInstance: {fileID: 506808951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &938058874
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &938058875
 RectTransform:
   m_ObjectHideFlags: 0
